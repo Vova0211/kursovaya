@@ -1,0 +1,10 @@
+@import url(normolize.css);
+body {
+    padding: 0 25px;
+}
+th, td {
+    padding: 4px 10px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    text-align: center;
+}
