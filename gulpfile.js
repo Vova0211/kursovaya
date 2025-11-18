@@ -2,6 +2,7 @@ const {src, dest, watch, series, parallel} = require('gulp');
 const cleanCSS = require('gulp-clean-css');
 const uglify = require('gulp-uglify');
 const htmlmin = require('gulp-htmlmin');
+const contact = require('gulp-concat');
 
 function buildStyles() {
   return src('./src/styles/style.css')
@@ -10,7 +11,8 @@ function buildStyles() {
 };
 
 function cleanJs() {
-  return src('src/js/index.js')
+  return src('src/js/*.js')
+    .pipe(contact('index.js'))
     .pipe(uglify())
     .pipe(dest('dist/'));
 }
@@ -22,7 +24,7 @@ function cleanHTML() {
 }
 
 function watchStyle() { watch('src/styles/style.css', buildStyles)}
-function watchJS() {  watch('src/js/index.js', cleanJs)}
+function watchJS() {  watch('src/js/*.js', cleanJs)}
 function watchHTML() {  watch('src/pages/index.html', cleanHTML)}
 
 
