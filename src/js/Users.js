@@ -53,11 +53,10 @@ class Users {
     }
     
     sort(type) {
-        const functions = { fio: e => e.sort((a, b) => new ParsePrintedData(a).fio() - new ParsePrintedData(b).fio())/*, birthday, studyStart, faculty */};
+        const functions = {id: (a, b) => parseInt(a.id) - parseInt(b.id), fio: (a, b) => a.surname - b.surname, studyStart: (a,b) => parseInt(a.studyStart) - parseInt(b.studyStart) /*, birthday, , faculty */};
         const users_copy = this.users_list;
-        
-        console.log(functions[type](users_copy));
-        
+        users_copy.sort(functions[type])
+       
         this.printUsers(users_copy);
     }
 }
