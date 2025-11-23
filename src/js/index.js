@@ -38,16 +38,18 @@ function eventSearch(event) {
 
     users.getUsers(param);
 }
-document.querySelectorAll('.t-head').forEach(th => {th.addEventListener('click', e => {
-    const key = th.dataset.name;
-    console.log(key);
-    
-    users.sort(key);
-})})
+
+document.querySelectorAll('.t-head').forEach(th => {
+    th.addEventListener('click', e => {
+        const key = th.dataset.name;    
+        users.sort(key);
+    })
+})
 document.getElementById('form').addEventListener('submit', eventForm);
 document.getElementById('find-user').addEventListener('click', eventSearch);
 document.getElementById('find-user_reset').addEventListener('click', e => {
-    users.printUsers();e.target.parentNode.firstChild.value = "";
+    users.printUsers();
+    e.target.parentNode.firstChild.value = "";
 })
 document.addEventListener('DOMContentLoaded', async e => {
     setMaxDateForm();

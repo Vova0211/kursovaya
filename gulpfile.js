@@ -3,6 +3,7 @@ const cleanCSS = require('gulp-clean-css');
 const uglify = require('gulp-uglify');
 const htmlmin = require('gulp-htmlmin');
 const contact = require('gulp-concat');
+const order = require('gulp-order');
 
 function buildStyles() {
   return src('./src/styles/style.css')
@@ -12,6 +13,7 @@ function buildStyles() {
 
 function cleanJs() {
   return src('src/js/*.js')
+    .pipe(order(['ParsePrintedData.js', 'SortUsers.js', 'Users.js', 'index.js']))
     .pipe(contact('index.js'))
     .pipe(uglify())
     .pipe(dest('dist/'));

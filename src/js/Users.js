@@ -9,6 +9,7 @@ class Users {
             console.log(error);
         }
     }
+
     static async deleteUser(id) {
         try {
             const headers = {method: "DELETE"};
@@ -20,22 +21,24 @@ class Users {
     }
 
     constructor(users_list = []) {
-        this.users_list = users_list;
+        this.data = users_list;
+        this.users_list;
     }
 
     async getUsers(param = '') {
         try {
             const ans = await fetch(Users.url + `?search=${param}`);
             const data = await ans.json();
-            if (param == '') this.users_list = data;
+            if (param == '') this.data = data;
             this.printUsers(data);
         } catch(error) {
             console.log(error);
         }
     }
 
-    printUsers(users = this.users_list) {
+    printUsers(users = this.data) {
         if (users.length == 0) return;
+        this.users_list = users;
         document.querySelectorAll('.user').forEach(user => user.remove());
         const temp_user = document.getElementById("temp-user_row").content;
         const table_place = document.getElementById("table-body");
@@ -53,10 +56,7 @@ class Users {
     }
     
     sort(type) {
-        const functions = {id: (a, b) => parseInt(a.id) - parseInt(b.id), fio: (a, b) => a.surname - b.surname, studyStart: (a,b) => parseInt(a.studyStart) - parseInt(b.studyStart) /*, birthday, , faculty */};
-        const users_copy = this.users_list;
-        users_copy.sort(functions[type])
-       
-        this.printUsers(users_copy);
+        const sorter = new SortUsers(this.users_list);
+        this.printUsers(sorter[type]());
     }
 }

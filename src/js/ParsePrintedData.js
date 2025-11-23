@@ -2,8 +2,8 @@ function countYears(start, end, round = 'floor') {
     return Math[round]((end-start) / (365 * 24 * 60 * 60 * 1000))
 }
 class ParsePrintedData {
-    constructor(data) {
-        this.data = data;
+    constructor(user) {
+        this.data = user;
     }
     id() {
         return this.data.id;

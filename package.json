@@ -4,10 +4,14 @@
   "main": "index.js",
   "scripts": {
     "build": "npx gulp build",
-    "start": "npx gulp",
-    "server": "node backend/index.js"
+    "dev": "npx gulp",
+    "start": "node backend/index.js"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vova0211/kursovaya.git"
+  },
+  "author": "Vova0211",
   "license": "ISC",
   "description": "",
   "dependencies": {
@@ -16,6 +20,7 @@
     "gulp-cli": "^3.1.0",
     "gulp-concat": "^2.6.1",
     "gulp-htmlmin": "^5.0.1",
+    "gulp-order": "^1.2.0",
     "gulp-uglify": "^3.0.2"
   }
 }
