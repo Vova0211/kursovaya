@@ -10,7 +10,7 @@ git clone https://github.com/Vova0211/kursovaya
 npm i
 ```
   ```
-	npm run build
+npm run build
 ```
   ```
 npm start
