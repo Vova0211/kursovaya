@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 /* eslint-disable no-console */
 // импорт стандартных библиотек Node.js
 const { existsSync, readFileSync, writeFileSync } = require('fs');

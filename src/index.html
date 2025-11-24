@@ -10,7 +10,7 @@
 <body>
     <h1>Управление студентами</h1>
     <div class="find-user">
-        <input pattern="^[А-ЯЁA-Z\dа-яёa-z]+$" name="param" type="text" placeholder="Поиск по имени, фамилии">
+        <input pattern="^[А-ЯЁA-Z\dа-яёa-z]+$" name="param" type="search" placeholder="Поиск по имени, фамилии">
         <button id="find-user" type="button">Поиск</button>
         <button id="find-user_reset" type="button">Сбросить</button>
     </div>
@@ -18,11 +18,11 @@
         <table class="table-users">
             <thead>
                 <tr>
-                    <th class="t-head" data-name="id">ID</th>
-                    <th class="t-head" data-name="fio">ФИО</th>
-                    <th class="t-head" data-name="birthday">Дата рождения</th>
-                    <th class="t-head" data-name="studyStart">Год начала обучения</th>
-                    <th class="t-head" data-name="faculty">Факультет</th>
+                    <th class="t-head" data-name="id">ID <span></span></th>
+                    <th class="t-head" data-name="fio">ФИО <span></span></th>
+                    <th class="t-head" data-name="birthday">Дата рождения <span></span></th>
+                    <th class="t-head" data-name="studyStart">Год начала обучения <span></span></th>
+                    <th class="t-head" data-name="faculty">Факультет <span></span></th>
                     <th>Действия</th>
                 </tr>
             </thead>
@@ -33,7 +33,7 @@
     </div>
     <div class="add-user">
         <h2>Добавить нового студента</h2>
-        <form id="form">
+        <form id="form" class="form_add">
             <input pattern="^[А-ЯЁA-Z][a-zа-яё]+$" required type="text" name="name" placeholder="Имя">
             <input pattern="^[А-ЯЁA-Z][a-zа-яё]+$" required type="text" name="surname" placeholder="Фамилия">
             <input pattern="^[А-ЯЁA-Z][a-zа-яё]+$" required type="text" name="lastname" placeholder="Отчество">

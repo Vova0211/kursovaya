@@ -1,5 +1,5 @@
-function countYears(start, end, round = 'floor') {
-    return Math[round]((end-start) / (365 * 24 * 60 * 60 * 1000))
+function countYears(startYear, endYear, round = 'floor') {
+    return Math[round]((endYear-startYear) / (365 * 24 * 60 * 60 * 1000))
 }
 class ParsePrintedData {
     constructor(user) {

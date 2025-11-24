@@ -1,10 +1,48 @@
 @import url(normolize.css);
 body {
-    padding: 0 25px;
+    width: 100%;
+    text-align: center;
 }
+
+.table-users {
+    border-spacing: 4px;
+    margin: auto;
+    margin-top: 15px;
+}
+
 th, td {
-    padding: 4px 10px;
+    padding: 5px 15px;
     border: 1px solid rgba(0, 0, 0, 0.5);
     box-sizing: border-box;
     text-align: center;
+}
+
+.t-head {
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.th_selected {
+    padding-left: 10px;
+    padding-right: 20px;
+}
+
+.th_selected span {
+    content: "";
+    position: absolute;
+    top: 3.5px;
+    margin-left: 2px;
+    border: 7px solid transparent;
+    border-bottom: 7px solid black;
+    
+}
+input {
+    min-width: 150px;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
