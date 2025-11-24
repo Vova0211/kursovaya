@@ -8,20 +8,58 @@ function setMaxDateForm() {
     studyStart.max = date.getFullYear();
 }
 
-document.querySelectorAll('.t-head').forEach(th => {
-    th.addEventListener('click', e => {
-        document.querySelectorAll('th').forEach(e => e.classList.remove('th_selected'));
-        e.target.classList.add("th_selected")
-        const key = th.dataset.name;
-        users.sort(key);
-    })
-})
-document.getElementById('form').addEventListener('submit', eventForm);
-document.getElementById('find-user').addEventListener('click', eventSearch);
-document.getElementById('find-user_reset').addEventListener('click', e => {
+function eventForm_addUser(event) {
+    event.preventDefault();
+    const form_html = event.target;
+    const user = {};
+    const user_keys = ["name", "surname", "lastname", "birthday", "studyStart", "faculty"];
+    user_keys.forEach(key => {
+        const value = form_html.querySelector(`[name="${key}"]`).value;
+        if (key == 'birthday') {
+            user[key] = new Date(value).toISOString();
+        } else {
+            user[key] = value;
+        }
+    });
+    Users.sendUser(user);
+    users.getUsers();
+}
+
+function eventDeleteUser(event) {
+    const id = event.target.parentNode.getAttribute('id');
+    Users.deleteUser(id);
+    
+    users.getUsers();
+}
+
+function eventForm_findUsers(event) {
+    event.preventDefault();
+    const inp = event.target.param;
+    const param = event.target.param.value;
+    inp.value = "";
+
+    users.getUsers(param);
+}
+
+function eventForm_resetUsers(event) {
+    event.preventDefault();
+
     users.printUsers();
-    e.target.parentNode.firstChild.value = "";
-})
+}
+
+function eventTh_sort(event, th_elem) {
+    document.querySelectorAll('th').forEach(e => e.classList.remove('th_selected'));
+    event.target.classList.add("th_selected")
+    const key = th_elem.dataset.name;
+
+    users.sort(key);
+}
+
+table_heads.forEach(th => {
+    th.addEventListener('click', e => {eventTh_sort(e, th)})})
+add_user_form.addEventListener('submit', eventForm_addUser);
+find_users_form.addEventListener('submit', eventForm_findUsers);
+find_users_form.addEventListener('reset', eventForm_resetUsers);
 document.addEventListener('DOMContentLoaded', async e => {
     setMaxDateForm();
     users.getUsers();

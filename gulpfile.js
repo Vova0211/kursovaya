@@ -13,7 +13,7 @@ function buildStyles() {
 
 function cleanJs() {
   return src('src/js/*.js')
-    .pipe(order(['ParsePrintedData.js', 'SortUsers.js', 'Users.js', 'index.js']))
+    .pipe(order(['variables.js','ParsePrintedData.js', 'SortUsers.js', 'Users.js', 'index.js']))
     .pipe(contact('index.js'))
     .pipe(uglify())
     .pipe(dest('dist/'));

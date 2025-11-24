@@ -9,11 +9,11 @@
 </head>
 <body>
     <h1>Управление студентами</h1>
-    <div class="find-user">
+    <form class="find-user" id="form_findUsers">
         <input pattern="^[А-ЯЁA-Z\dа-яёa-z]+$" name="param" type="search" placeholder="Поиск по имени, фамилии">
-        <button id="find-user" type="button">Поиск</button>
-        <button id="find-user_reset" type="button">Сбросить</button>
-    </div>
+        <button id="find-user" type="submit">Поиск</button>
+        <button id="find-user_reset" type="reset">Сбросить</button>
+    </form>
     <div class="users">
         <table class="table-users">
             <thead>
@@ -33,7 +33,7 @@
     </div>
     <div class="add-user">
         <h2>Добавить нового студента</h2>
-        <form id="form" class="form_add">
+        <form id="form_addUser" class="form_add">
             <input pattern="^[А-ЯЁA-Z][a-zа-яё]+$" required type="text" name="name" placeholder="Имя">
             <input pattern="^[А-ЯЁA-Z][a-zа-яё]+$" required type="text" name="surname" placeholder="Фамилия">
             <input pattern="^[А-ЯЁA-Z][a-zа-яё]+$" required type="text" name="lastname" placeholder="Отчество">

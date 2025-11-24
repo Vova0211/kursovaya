@@ -1,9 +1,13 @@
 class Users {
-    static url = 'http://localhost:3000/api/students';
+    constructor(users_list = []) {
+        this.data = users_list;
+        this.users_list;
+    }
+
     static async sendUser(user) {
         try {
-            const headers = { method: "POST", body: JSON.stringify(user), headers: {"Content-Type": "application/json"} }
-            const ans = await fetch(this.url, headers);
+            const headers = { method: "POST", body: JSON.stringify(user), headers: { "Content-Type": "application/json" } }
+            const ans = await fetch(url, headers);
             return ans.status;
         } catch(error) {
             console.log(error);
@@ -12,22 +16,17 @@ class Users {
 
     static async deleteUser(id) {
         try {
-            const headers = {method: "DELETE"};
-            const ans = await fetch(`${this.url}/${id}`, headers);
+            const headers = { method: "DELETE" };
+            const ans = await fetch(`${url}/${id}`, headers);
             return ans.status;
         } catch(error) {
             console.log(error);
         }
     }
 
-    constructor(users_list = []) {
-        this.data = users_list;
-        this.users_list;
-    }
-
     async getUsers(param = '') {
         try {
-            const ans = await fetch(Users.url + `?search=${param}`);
+            const ans = await fetch(url + `?search=${param}`);
             const data = await ans.json();
             if (param == '') this.data = data;
             this.printUsers(data);
@@ -50,7 +49,7 @@ class Users {
                 user.querySelector('.' + key).textContent = parser[key]();
             })
             user.querySelector('.actions').setAttribute('id', user_data.id);
-            user.querySelector(".delete_user").addEventListener('click', eventDelete);
+            user.querySelector(".delete_user").addEventListener('click', eventDeleteUser);
             table_place.appendChild(user);
         })
     }
