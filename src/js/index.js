@@ -14,7 +14,7 @@ function eventForm_addUser(event) {
     const user = {};
     const user_keys = ["name", "surname", "lastname", "birthday", "studyStart", "faculty"];
     user_keys.forEach(key => {
-        const value = form_html.querySelector(`[name="${key}"]`).value;
+        const value = form_html.querySelector(`[name="${key}"]`).value.trim();
         if (key == 'birthday') {
             user[key] = new Date(value).toISOString();
         } else {
@@ -25,12 +25,6 @@ function eventForm_addUser(event) {
     users.getUsers();
 }
 
-function eventDeleteUser(event) {
-    const id = event.target.parentNode.getAttribute('id');
-    Users.deleteUser(id);
-    
-    users.getUsers();
-}
 
 function eventForm_findUsers(event) {
     event.preventDefault();

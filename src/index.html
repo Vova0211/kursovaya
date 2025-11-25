@@ -34,12 +34,12 @@
     <div class="add-user">
         <h2>Добавить нового студента</h2>
         <form id="form_addUser" class="form_add">
-            <input pattern="^[А-ЯЁA-Z][a-zа-яё]+$" required type="text" name="name" placeholder="Имя">
-            <input pattern="^[А-ЯЁA-Z][a-zа-яё]+$" required type="text" name="surname" placeholder="Фамилия">
-            <input pattern="^[А-ЯЁA-Z][a-zа-яё]+$" required type="text" name="lastname" placeholder="Отчество">
+            <input pattern="[А-ЯЁA-Z][a-zа-яё]+" required type="text" name="name" placeholder="Имя">
+            <input pattern="[А-ЯЁA-Z][a-zа-яё]+" required type="text" name="surname" placeholder="Фамилия">
+            <input pattern="[А-ЯЁA-Z][a-zа-яё]+" required type="text" name="lastname" placeholder="Отчество">
             <input min="1900-01-01" required type="date" name="birthday">
             <input pattern="[\d]{4}" min="2000" required type="number" name="studyStart" placeholder="Год начала обучения">
-            <input pattern="[A-Za-zА-ЯЁа-яё]+" required type="text" name="faculty" placeholder="Факультет">
+            <input pattern="[A-Za-zА-ЯЁа-яё ]+" required type="text" name="faculty" placeholder="Факультет">
             <button type="submit">Добавить студента</button>
         </form>
     </div>

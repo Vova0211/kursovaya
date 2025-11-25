@@ -14,10 +14,11 @@ class Users {
         }
     }
 
-    static async deleteUser(id) {
+    async deleteUser(id) {
         try {
             const headers = { method: "DELETE" };
             const ans = await fetch(`${url}/${id}`, headers);
+            this.getUsers()
             return ans.status;
         } catch(error) {
             console.log(error);
@@ -48,8 +49,7 @@ class Users {
             keys.forEach(key => {
                 user.querySelector('.' + key).textContent = parser[key]();
             })
-            user.querySelector('.actions').setAttribute('id', user_data.id);
-            user.querySelector(".delete_user").addEventListener('click', eventDeleteUser);
+            user.querySelector(".delete_user").addEventListener('click', e => {this.deleteUser(user_data.id)});
             table_place.appendChild(user);
         })
     }
